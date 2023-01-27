@@ -21,13 +21,22 @@ function taskMaker (){
     list.appendChild(taskBar)
     const task = inputField.value
     tasks.push(task)
-    taskBar.innerHTML = task + `<img style='width:10px' src="./img/done.png" alt="">`
+    taskBar.innerHTML =  task+`<img class='tickbutton' style='width:10px' src="./img/done.png" alt="">`
     inputField.value =''
 
 }
 
-function taskDone (){
-console.log(target.value);
+
+
+list.addEventListener('click',taskDone)
+
+function taskDone (e){
+console.log(e.target.parentNode);
+
+e.target.parentNode.innerHTML
+console.log(e.target.parentNode.childNodes[0]);
+
+  e.target.parentNode.classList.toggle('doneclass')  
 }
 
 function clear (){
