@@ -2,14 +2,15 @@
 let inputField = document.querySelector('.inputField')
 let addButton = document.querySelector('.addBtn')
 let list = document.querySelector('.list')
+let clearBtn = document.querySelector('.clearBtn')
 
 
 
-const tasks = []
+let tasks = []
 
 
 addButton.addEventListener('click',taskMaker)
-
+clearBtn.addEventListener('click',clear)
 inputField.addEventListener('keypress',(e)=>{
     if (e.key==='Enter') {addButton.click()}})
 
@@ -27,4 +28,8 @@ function taskMaker (){
 
 function taskDone (){
 console.log(target.value);
+}
+
+function clear (){
+    list.innerHTML=''
 }
