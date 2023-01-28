@@ -10,12 +10,8 @@ let clearBtn = document.querySelector('.clearBtn')
 let badge = document.querySelector('.badge')
 
 
-document.addEventListener('DOMContentLoaded',()=>{
-    let cache = localStorage.getItem('todo')
-    console.log(JSON.parse(cache));
-    tasks = [cache]
-    console.log(tasks);
-})
+document.addEventListener('DOMContentLoaded',getTodoList)
+
 
 let tasks = []
 
@@ -50,6 +46,16 @@ function saveTodo (task){
 
 }
 
+function getTodoList(){
+    const todoList = (localStorage.getItem('todo')) ? JSON.parse(localStorage.getItem('todo')) : []
+    console.log(todoList);
+
+
+
+    }
+    
+
+
 
 
 list.addEventListener('click',taskDone)
@@ -70,7 +76,10 @@ let itemSelected = e.target.parentNode
         console.log(list);
         itemSelected.classList.toggle('doneclass')
         console.log(e);
-       
+        const task = list[i]
+        tasks.push(task)
+        taskBar.innerHTML =  task+`<img class='tickbutton' style='width:10px' src="./img/done.png" alt=""> 
+        <img class='removebutton' style='width:10px' src="./img/remove.png" alt="">`
     }
 
         
