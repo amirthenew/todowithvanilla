@@ -1,3 +1,7 @@
+
+
+
+
 //todo list with vanilla js
 let inputField = document.querySelector('.inputField')
 let addButton = document.querySelector('.addBtn')
@@ -6,6 +10,12 @@ let clearBtn = document.querySelector('.clearBtn')
 let badge = document.querySelector('.badge')
 
 
+document.addEventListener('DOMContentLoaded',()=>{
+    let cache = localStorage.getItem('todo')
+    console.log(JSON.parse(cache));
+    tasks = [cache]
+    console.log(tasks);
+})
 
 let tasks = []
 
@@ -24,8 +34,19 @@ function taskMaker (){
     tasks.push(task)
     taskBar.innerHTML =  task+`<img class='tickbutton' style='width:10px' src="./img/done.png" alt=""> 
     <img class='removebutton' style='width:10px' src="./img/remove.png" alt="">`
+    saveTodo(task)
     badge.innerHTML = tasks.length
     inputField.value =''
+
+}
+
+function saveTodo (task){
+    const todoList = localStorage.getItem('todo') ?
+        JSON.parse(localStorage.getItem("todo")) : []
+
+        const  todoSaved ={task}
+        todoList.push(todoSaved)
+    localStorage.setItem('todo',JSON.stringify(todoList))
 
 }
 
