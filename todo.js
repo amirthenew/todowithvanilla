@@ -3,6 +3,7 @@ let inputField = document.querySelector('.inputField')
 let addButton = document.querySelector('.addBtn')
 let list = document.querySelector('.list')
 let clearBtn = document.querySelector('.clearBtn')
+let badge = document.querySelector('.badge')
 
 
 
@@ -23,6 +24,7 @@ function taskMaker (){
     tasks.push(task)
     taskBar.innerHTML =  task+`<img class='tickbutton' style='width:10px' src="./img/done.png" alt=""> 
     <img class='removebutton' style='width:10px' src="./img/remove.png" alt="">`
+    badge.innerHTML = tasks.length
     inputField.value =''
 
 }
@@ -34,22 +36,24 @@ list.addEventListener('click',taskDone)
 
 
 function taskDone (e){
-console.log(e.target.parentNode);
 
-if (e.target.parentNode.classList.contains(list)){
-    alert('ghad')
-    retun
-}
-
-
+    console.log(e.target.parentNode);
 
 let itemSelected = e.target.parentNode
-    itemSelected.classList.toggle('doneclass') 
-    
+   
     if (e.target.classList.contains('removebutton')){
         e.target.parentNode.innerText = ''
-        console.log(e.target.parentNode);
-}
+        console.log(e.target.parentNode)
+    }
+    else if(e.target.classList.contains('tickbutton')){
+        console.log(list);
+        itemSelected.classList.toggle('doneclass')
+        console.log(e);
+       
+    }
+
+        
+
 }
 
 
